@@ -22,7 +22,7 @@ class Tabell
       cout << tabell[j] << endl;
     }
   } 
-  void shellsort(int d)
+  void shellsort(double d)
   {
     int n = lengde;
     int s = n/2;
@@ -53,19 +53,26 @@ Tabell::Tabell(int lengden){
 int main()
 {
   srand(time(NULL));
+  double lavesteTid = 10;
+  double delingstall;
   double tid;
-  int lengde =10;
+  int lengde =100000;
   Tabell tabellen(lengde);
   clock_t start, slutt;
   tabellen.lagTabell();
   // tabellen.skrivUt();
-  for(int i = 2; i<10; i++){
+  for(double i = 2; i<20; i+=0.1){
   start = clock();
-  tabellen.shellsort();
+  tabellen.shellsort(i);
   slutt = clock();
   tid = ((double) (slutt - start))/CLOCKS_PER_SEC;
-  cout << "Tiden: " << tid  << "Delingstall: " << i <<  endl;
-  }  
+  if(tid<lavesteTid){
+    lavesteTid = tid;
+    delingstall = i;
+  }
+  // cout << "Tiden: " << tid  << "  Delingstall: " << i <<  endl;
+  } 
+  cout << "Laveste tid: " << lavesteTid << "\nDelingstall: " << delingstall << endl;
   // tabellen.skrivUt();
   for(int i = 0; i<lengde-2; i++){
     int en = tabellen.getTall(i+1);
