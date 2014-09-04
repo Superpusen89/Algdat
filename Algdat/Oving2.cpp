@@ -4,9 +4,9 @@
 #include <time.h>
 using namespace std;
 
-double Kall(double x, double n);
+double Kall(double x, int n);
 double Kall2(double x, int n);
-double pow(double x, double n);
+double pow(double x, int n);
 
 int main()
 {
@@ -30,7 +30,7 @@ int main()
   return 0;
 }
 
-double Kall(double x, double n)
+double Kall(double x, int n)
 {
   if(n==0){
     return 1;
